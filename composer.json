@@ -1,0 +1,48 @@
+{
+    "name": "ingenerator/mailhook",
+    "description": "Collects email from a local postfix server so you can inspect, assert and otherwise mess around with emails sent during development.",
+    "homepage": "https://github.com/ingenerator/mailhook",
+    "type": "library",
+    "license": "BSD-3-Clause",
+    "authors": [
+        {
+            "name": "inGenerator",
+            "homepage": "http://www.ingenerator.com/"
+        },
+        {
+            "name": "Andrew Coulton",
+            "email": "andrew@ingenerator.com",
+            "homepage": "http://www.ingenerator.com"
+        }
+    ],
+    "require": {
+        "php":     ">=5.3"
+    },
+    "require-dev": {
+        "phpspec/phpspec":       "~2.0@dev",
+        "phpspec/prophecy":      "~1.1@dev",
+        "mikey179/vfsStream":    "~1.3"
+    },
+    "suggest": {
+    },
+    "support": {
+        "issues": "https://github.com/ingenerator/mailhook/issues",
+        "source": "https://github.com/ingenerator/mailhook"
+    },
+    "autoload": {
+        "psr-0": {
+            "Ingenerator": "src/",
+            "spec": ""
+        }
+    },
+    "bin": [],
+    "config": {
+        "bin-dir": "bin",
+        "preferred-install": "dist"
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-master": "1.0.x-dev"
+        }
+    }
+}
