@@ -56,7 +56,7 @@ run_my_code_that_should_send_emails();
 
 $mailhook->refresh();
 
-$mails = $mailhook->get_emails();
+$mails = $mailhook->getEmails();
 assert(count($mails) === 1, 'An email was sent');
 ```
 
