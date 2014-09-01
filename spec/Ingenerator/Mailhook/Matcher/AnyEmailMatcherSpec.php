@@ -15,7 +15,7 @@ use spec\ObjectBehavior;
  *
  * @see Ingenerator\Mailhook\Matcher\AnyEmailMatcher
  */
-class AnyEmailMatcherSpec extends ObjectBehavior
+class AnyEmailMatcherSpec extends EmailMatcherBehaviour
 {
     /**
      * Use $this->subject to get proper type hinting for the subject class
@@ -26,11 +26,6 @@ class AnyEmailMatcherSpec extends ObjectBehavior
 	function it_is_initializable()
     {
 		$this->subject->shouldHaveType('Ingenerator\Mailhook\Matcher\AnyEmailMatcher');
-	}
-
-	function it_is_an_email_matcher()
-	{
-		$this->subject->shouldHaveType('Ingenerator\Mailhook\EmailMatcher');
 	}
 
 	function it_describes_itself_as_an_any_matcher()
