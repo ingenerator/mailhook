@@ -8,6 +8,7 @@
  */
 
 namespace Ingenerator\Mailhook;
+
 use Ingenerator\Mailhook\Assert\NegativeAssertionRunner;
 use Ingenerator\Mailhook\Assert\PositiveAssertionRunner;
 
@@ -25,11 +26,6 @@ class Mailhook {
 	protected $asserter;
 
 	/**
-	 * @var EmailParser
-	 */
-	protected $parser;
-
-	/**
 	 * @var string
 	 */
 	protected $dump_file;
@@ -45,6 +41,11 @@ class Mailhook {
 	protected $emails = array();
 
 	/**
+	 * @var EmailParser
+	 */
+	protected $parser;
+
+	/**
 	 * @param string           $dump_file
 	 * @param null|EmailParser $parser
 	 */
@@ -56,13 +57,15 @@ class Mailhook {
 
 	public function assert()
 	{
-		if ( ! $this->asserter) {
-			$filterer = new EmailListFilterer;
+		if ( ! $this->asserter)
+		{
+			$filterer       = new EmailListFilterer;
 			$this->asserter = new MailhookAsserter(
 				new PositiveAssertionRunner($this, $filterer),
 				new NegativeAssertionRunner($this, $filterer)
 			);
 		}
+
 		return $this->asserter;
 	}
 
@@ -92,7 +95,7 @@ class Mailhook {
 		if (file_exists($this->dump_file))
 		{
 			$deleted = (is_writable($this->dump_file) AND unlink($this->dump_file));
-			if (!$deleted)
+			if ( ! $deleted)
 			{
 				throw new \RuntimeException('Could not delete mail dump at ' . $this->dump_file);
 			}
@@ -122,7 +125,7 @@ class Mailhook {
 	{
 		$mails = array();
 
-		if (!file_exists($this->dump_file))
+		if ( ! file_exists($this->dump_file))
 		{
 			return $mails;
 		}
