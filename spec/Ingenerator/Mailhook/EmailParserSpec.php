@@ -51,7 +51,7 @@ class EmailParserSpec extends ObjectBehavior
 test
 
 
-with newlines
+with newlines and http://www.ingenerator.com/foo?bar=baz
 and lines
 
 TEXT
@@ -72,12 +72,13 @@ TEXT
         to login in future).
 </p>
 <p>
-        <a href="http://ccstravel.dev/register/verify?token=0uAdL%2BRD0XnnnH%2Be-1409482211-7ea81e981ad6c8f8b2e41d74b257c147e664087f">
-                Activate your account<span style="font-size: 0;"> at http://ccstravel.dev/register/verify?token=0uAdL%2BRD0XnnnH%2Be-1409482211-7ea81e981ad6c8f8b2e41d74b257c147e664087f</span>
+        <a href="https://ccstravel.dev/register/verify?token=0uAdL%2BRD0XnnnH%2Be-1409482211-7ea81e981ad6c8f8b2e41d74b257c147e664087f">
+                Activate your account<span style="font-size: 0;"> at https://ccstravel.dev/register/verify?token=0uAdL%2BRD0XnnnH%2Be-1409482211-7ea81e981ad6c8f8b2e41d74b257c147e664087f</span>
         </a>
 </p>
 <hr>
-<p>
+<p><small>
+Visit us at <a href="http://ccstravel.dev/">ccstravel.dev</a></small>
 </p>
 </body>
 </html>
@@ -87,6 +88,19 @@ TEXT
 
 	}
 
+	function it_parses_unique_links_from_content()
+	{
+		$this->subject->parse(self::SIMPLE_MAIL)->getLinks()
+			->shouldBe(array(
+				'http://www.ingenerator.com/foo?bar=baz'
+			));
+
+		$this->subject->parse(self::HTML_MAIL)->getLinks()
+			->shouldBe(array(
+				'https://ccstravel.dev/register/verify?token=0uAdL%2BRD0XnnnH%2Be-1409482211-7ea81e981ad6c8f8b2e41d74b257c147e664087f',
+			    'http://ccstravel.dev/',
+			));
+	}
 
 	const SIMPLE_MAIL = <<<'MAIL'
 From test@ingenerator.com  Thu Aug 28 15:09:47 2014
@@ -101,7 +115,7 @@ From: test@ingenerator.com (test)
 test
 
 
-with newlines
+with newlines and http://www.ingenerator.com/foo?bar=3Dbaz
 and lines
 
 MAIL;
@@ -142,16 +156,17 @@ ture).
 </p>
 <p>
         <a h=
-ref=3D"http://ccstravel.dev/register/verify?token=3D0uAdL%2BRD0XnnnH%2Be=
+ref=3D"https://ccstravel.dev/register/verify?token=3D0uAdL%2BRD0XnnnH%2Be=
 -1409482211-7ea81e981ad6c8f8b2e41d74b257c147e664087f">
                 Activate yo=
-ur account<span style=3D"font-size: 0;"> at http://ccstravel.dev/register/=
+ur account<span style=3D"font-size: 0;"> at https://ccstravel.dev/register/=
 verify?token=3D0uAdL%2BRD0XnnnH%2Be-1409482211-7ea81e981ad6c8f8b2e41d74b25=
 7c147e664087f</span>
         </a>
 </p>
 <hr>
-<p>
+<p><small>
+Visit us at <a href=3D"http://ccstravel.dev/">ccstravel.dev</a></small>
 </p>
 </body>
 </html=

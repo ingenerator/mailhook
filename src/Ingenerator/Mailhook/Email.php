@@ -18,6 +18,11 @@ class Email {
 	protected $content;
 
 	/**
+	 * @var string[]
+	 */
+	protected $links = array();
+
+	/**
 	 * @var string
 	 */
 	protected $subject;
@@ -44,6 +49,28 @@ class Email {
 	public function getContent()
 	{
 		return $this->content;
+	}
+
+	/**
+	 * @return \string[] the urls of all links in the email
+	 */
+	public function getLinks()
+	{
+		return $this->links;
+	}
+
+	/**
+	 * @param string $pattern regular expression
+	 *
+	 * @return \string[] the urls matching the pattern
+	 */
+	public function getLinksMatching($pattern)
+	{
+		return array_filter($this->links, function ($link) use ($pattern)
+			{
+				return preg_match($pattern, $link);
+			}
+		);
 	}
 
 	/**

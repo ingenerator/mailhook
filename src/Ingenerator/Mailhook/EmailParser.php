@@ -31,6 +31,8 @@ class EmailParser {
 			'content' => quoted_printable_decode($content)
 		);
 
+		$data['links'] = $this->parseLinksFromContent($data['content']);
+
 		if (preg_match('/^To:\s+<?(.+?)>?$/m', $headers, $matches))
 		{
 			$data['to'] = $matches[1];
@@ -42,5 +44,23 @@ class EmailParser {
 		}
 
 		return new Email($data);
+	}
+
+	/**
+	 * @param string $content
+	 *
+	 * @return string[]
+	 */
+	protected function parseLinksFromContent($content)
+	{
+		if (preg_match_all('_https?://[^\s^"^<]+_', $content, $matches))
+		{
+			$links = $matches[0];
+			return array_values(array_unique($links));
+		}
+		else
+		{
+			return array();
+		}
 	}
 }
