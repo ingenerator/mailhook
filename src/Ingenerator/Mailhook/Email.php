@@ -9,7 +9,6 @@
 
 namespace Ingenerator\Mailhook;
 
-
 class Email {
 
 	/**
@@ -52,7 +51,7 @@ class Email {
 	}
 
 	/**
-	 * @return \string[] the urls of all links in the email
+	 * @return string[] the urls of all links in the email
 	 */
 	public function getLinks()
 	{

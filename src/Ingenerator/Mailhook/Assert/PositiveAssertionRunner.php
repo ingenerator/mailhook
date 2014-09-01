@@ -20,7 +20,6 @@ use Ingenerator\Mailhook\EmailMatcher;
  */
 class PositiveAssertionRunner extends AssertionRunner {
 
-
 	/**
 	 * @param Email[]        $matched_mails
 	 * @param EmailMatcher[] $matchers

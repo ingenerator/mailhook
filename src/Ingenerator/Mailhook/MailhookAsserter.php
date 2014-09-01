@@ -6,7 +6,6 @@
  * @licence    BSD
  */
 
-
 namespace Ingenerator\Mailhook;
 
 use Ingenerator\Mailhook\Assert\NegativeAssertionRunner;

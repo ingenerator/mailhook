@@ -6,7 +6,6 @@
  * @licence    BSD
  */
 
-
 namespace Ingenerator\Mailhook\Assert;
 
 use Ingenerator\Mailhook\Email;

@@ -8,7 +8,6 @@
 
 namespace Ingenerator\Mailhook\Assert;
 
-
 use Ingenerator\Mailhook\Email;
 use Ingenerator\Mailhook\EmailListFilterer;
 use Ingenerator\Mailhook\EmailMatcher;

@@ -8,7 +8,6 @@
 
 namespace Ingenerator\Mailhook;
 
-
 interface EmailMatcher {
 
 	/**
@@ -27,4 +26,4 @@ interface EmailMatcher {
 	 */
 	public function __toString();
 
-} 
+}

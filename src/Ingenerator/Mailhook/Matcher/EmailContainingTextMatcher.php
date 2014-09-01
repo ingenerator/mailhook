@@ -6,7 +6,6 @@
  * @licence    BSD
  */
 
-
 namespace Ingenerator\Mailhook\Matcher;
 
 use Ingenerator\Mailhook\Email;

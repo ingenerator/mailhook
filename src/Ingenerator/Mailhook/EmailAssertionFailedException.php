@@ -42,4 +42,4 @@ class EmailAssertionFailedException extends \Exception {
 		return $message.implode(', ', $matchers);
 	}
 
-} 
+}

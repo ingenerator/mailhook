@@ -40,5 +40,4 @@ class AnyEmailMatcher implements EmailMatcher {
 		return 'Any Email';
 	}
 
-
 }
