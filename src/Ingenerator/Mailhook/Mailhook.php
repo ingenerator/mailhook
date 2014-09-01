@@ -8,6 +8,8 @@
  */
 
 namespace Ingenerator\Mailhook;
+use Ingenerator\Mailhook\Assert\NegativeAssertionRunner;
+use Ingenerator\Mailhook\Assert\PositiveAssertionRunner;
 
 /**
  * Manages the postfix mail dump, retrieving and parsing new emails
@@ -16,6 +18,11 @@ namespace Ingenerator\Mailhook;
  * @see     spec\Ingenerator\Mailhook\MailhookSpec
  */
 class Mailhook {
+
+	/**
+	 * @var MailhookAsserter
+	 */
+	protected $asserter;
 
 	/**
 	 * @var EmailParser
@@ -45,6 +52,18 @@ class Mailhook {
 	{
 		$this->dump_file = $dump_file;
 		$this->parser    = $parser ? $parser : new EmailParser;
+	}
+
+	public function assert()
+	{
+		if ( ! $this->asserter) {
+			$filterer = new EmailListFilterer;
+			$this->asserter = new MailhookAsserter(
+				new PositiveAssertionRunner($this, $filterer),
+				new NegativeAssertionRunner($this, $filterer)
+			);
+		}
+		return $this->asserter;
 	}
 
 	/**

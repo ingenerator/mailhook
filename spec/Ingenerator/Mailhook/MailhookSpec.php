@@ -189,6 +189,11 @@ class MailhookSpec extends ObjectBehavior
 		$this->subject->getEmails()->shouldBe(array());
 	}
 
+	function its_assert_method_returns_constructed_asserter()
+	{
+		$this->subject->assert()->shouldBeAnInstanceOf('Ingenerator\Mailhook\MailhookAsserter');
+	}
+
 	/**
 	 * @param string $content
 	 * @param int    $mode
