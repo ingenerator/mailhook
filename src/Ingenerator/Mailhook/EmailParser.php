@@ -25,11 +25,11 @@ class EmailParser {
 	{
 		list($headers, $content) = explode("\n\n", $raw_message, 2);
 
-		$data = [
+		$data = array(
 			'to'      => NULL,
 			'subject' => NULL,
 			'content' => quoted_printable_decode($content)
-		];
+		);
 
 		$data['links'] = $this->parseLinksFromContent($data['content']);
 		$data['to']    = $this->parseRecipient($headers);
@@ -56,7 +56,7 @@ class EmailParser {
 		}
 		else
 		{
-			return [];
+			return array();
 		}
 	}
 
