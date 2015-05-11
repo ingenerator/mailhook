@@ -37,6 +37,7 @@ class EmailParserSpec extends ObjectBehavior
 	{
 		$this->subject->parse(self::SIMPLE_MAIL)->getTo()->shouldBe('vagrant@ccstravel.dev');
 		$this->subject->parse(self::HTML_MAIL)->getTo()->shouldBe('test+recipient@ingenerator.com');
+		$this->subject->parse(self::ADDRESSED_MAIL)->getTo()->shouldBe('vagrant@ccstravel.dev');
 	}
 
 	function it_parses_email_subject()
@@ -107,6 +108,24 @@ From test@ingenerator.com  Thu Aug 28 15:09:47 2014
 Received: by ccstravel.dev (Postfix, from userid 1000)
         id A57B83A1145; Thu, 28 Aug 2014 15:09:47 +0000 (UTC)
 To: <vagrant@ccstravel.dev>
+X-Mailer: mail (GNU Mailutils 2.2)
+Message-Id: <20140828150947.A57B83A1145@ccstravel.dev>
+Date: Thu, 28 Aug 2014 15:09:47 +0000 (UTC)
+From: test@ingenerator.com (test)
+
+test
+
+
+with newlines and http://www.ingenerator.com/foo?bar=3Dbaz
+and lines
+
+MAIL;
+
+    const ADDRESSED_MAIL = <<<'MAIL'
+From test@ingenerator.com  Thu Aug 28 15:09:47 2014
+Received: by ccstravel.dev (Postfix, from userid 1000)
+        id A57B83A1145; Thu, 28 Aug 2014 15:09:47 +0000 (UTC)
+To: Vagrant Vagrant <vagrant@ccstravel.dev>
 X-Mailer: mail (GNU Mailutils 2.2)
 Message-Id: <20140828150947.A57B83A1145@ccstravel.dev>
 Date: Thu, 28 Aug 2014 15:09:47 +0000 (UTC)

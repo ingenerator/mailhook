@@ -25,18 +25,14 @@ class EmailParser {
 	{
 		list($headers, $content) = explode("\n\n", $raw_message, 2);
 
-		$data = array(
+		$data = [
 			'to'      => NULL,
 			'subject' => NULL,
 			'content' => quoted_printable_decode($content)
-		);
+		];
 
 		$data['links'] = $this->parseLinksFromContent($data['content']);
-
-		if (preg_match('/^To:\s+<?(.+?)>?$/m', $headers, $matches))
-		{
-			$data['to'] = $matches[1];
-		}
+		$data['to']    = $this->parseRecipient($headers);
 
 		if (preg_match('/^Subject:\s+(.+?)$/m', $headers, $matches))
 		{
@@ -60,7 +56,23 @@ class EmailParser {
 		}
 		else
 		{
-			return array();
+			return [];
 		}
+	}
+
+	/**
+	* @param string $headers
+	*
+	* @return string
+	*/
+	protected function parseRecipient($headers)
+	{
+		if ( ! preg_match('/^To:\s+([^<]*?)(<[^>]+>)?$/m', $headers, $matches))
+			return NULL;
+	
+		if ($matches[2])
+			return trim($matches[2], '<>');
+	
+		return $matches[1];
 	}
 }
