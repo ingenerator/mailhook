@@ -70,7 +70,7 @@ class EmailParser {
 		if ( ! preg_match('/^To:\s+([^<]*?)(<[^>]+>)?$/m', $headers, $matches))
 			return NULL;
 	
-		if ($matches[2])
+		if (isset($matches[2]) && $matches[2])
 			return trim($matches[2], '<>');
 	
 		return $matches[1];
