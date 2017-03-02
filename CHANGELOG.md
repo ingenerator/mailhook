@@ -6,6 +6,7 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 ## 0.2.1 / 2017-03-02
 
+* Tighten up bossa/php-expect dependency as the newer version clashes with phpspec
 * [BUGFIX] Fix composer autoloader for development classes so it doesn't conflict
   with root project dependencies
 
