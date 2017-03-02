@@ -32,8 +32,12 @@
     },
     "autoload": {
         "psr-0": {
-            "Ingenerator\\Mailhook": "src/",
-            "spec": ""
+            "Ingenerator\\Mailhook": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "spec\\": "spec"
         }
     },
     "bin": [],
