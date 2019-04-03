@@ -37,7 +37,7 @@ class EmailSentToMatcher implements EmailMatcher {
 	 */
 	public function __toString()
 	{
-		return sprintf('To "%s"', $this->recipient);
+		return \sprintf('To "%s"', $this->recipient);
 	}
 
 	/**

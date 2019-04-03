@@ -82,7 +82,7 @@ class Mailhook {
 	 */
 	public function hasEmails()
 	{
-		return (bool) count($this->emails);
+		return (bool) \count($this->emails);
 	}
 
 	/**
@@ -92,9 +92,9 @@ class Mailhook {
 	 */
 	public function purge()
 	{
-		if (file_exists($this->dump_file))
+		if (\file_exists($this->dump_file))
 		{
-			$deleted = (is_writable($this->dump_file) AND unlink($this->dump_file));
+			$deleted = (\is_writable($this->dump_file) AND \unlink($this->dump_file));
 			if ( ! $deleted)
 			{
 				throw new \RuntimeException('Could not delete mail dump at ' . $this->dump_file);
@@ -125,7 +125,7 @@ class Mailhook {
 	{
 		$mails = array();
 
-		if ( ! file_exists($this->dump_file))
+		if ( ! \file_exists($this->dump_file))
 		{
 			return $mails;
 		}
@@ -133,7 +133,7 @@ class Mailhook {
 		$dump = $this->openDumpFileTail();
 
 		$mail_index = 0;
-		while ($line = fgets($dump))
+		while ($line = \fgets($dump))
 		{
 			// Identify the start of a new message
 			if ($this->isMailDumpSeparatorLine($line))
@@ -154,10 +154,10 @@ class Mailhook {
 	 */
 	protected function openDumpFileTail()
 	{
-		$dump = fopen($this->dump_file, 'r');
+		$dump = \fopen($this->dump_file, 'r');
 		if ($this->dump_tail_psn)
 		{
-			fseek($dump, $this->dump_tail_psn);
+			\fseek($dump, $this->dump_tail_psn);
 		}
 
 		return $dump;
@@ -170,7 +170,7 @@ class Mailhook {
 	 */
 	protected function isMailDumpSeparatorLine($line)
 	{
-		return preg_match('/^From [^\s]+\s*[\w ]+?[0-9]{2}:[0-9]{2}:[0-9]{2} [0-9]{4}$/m', $line);
+		return \preg_match('/^From [^\s]+\s*[\w ]+?[0-9]{2}:[0-9]{2}:[0-9]{2} [0-9]{4}$/m', $line);
 	}
 
 	/**
@@ -178,7 +178,7 @@ class Mailhook {
 	 */
 	protected function closeDumpFileTail($dump)
 	{
-		$this->dump_tail_psn = ftell($dump);
-		fclose($dump);
+		$this->dump_tail_psn = \ftell($dump);
+		\fclose($dump);
 	}
 }

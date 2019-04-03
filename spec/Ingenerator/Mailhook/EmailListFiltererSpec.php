@@ -106,12 +106,12 @@ class EmailListFiltererSpec extends ObjectBehavior
 	 */
 	protected function given_matcher_matches($matcher, $emails)
 	{
-		if ( ! is_array($emails)) {
+		if ( ! \is_array($emails)) {
 			$emails = array($emails);
 		}
 
 		$matcher->matches(Argument::any())->will(function ($args) use ($emails) {
-			return in_array($args[0], $emails, TRUE);
+			return \in_array($args[0], $emails, TRUE);
 		});
 	}
 

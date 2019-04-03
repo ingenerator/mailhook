@@ -50,7 +50,7 @@ class EmailWithLinkMatcher implements EmailMatcher {
 	{
 		if ($this->url_pattern)
 		{
-			return sprintf('With link matching "%s"', $this->url_pattern);
+			return \sprintf('With link matching "%s"', $this->url_pattern);
 		} else {
 			return 'With any link';
 		}

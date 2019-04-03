@@ -34,7 +34,7 @@ class StringRegexToken implements Argument\Token\TokenInterface {
 	 */
 	public function scoreArgument($argument)
 	{
-		return preg_match($this->pattern, $argument) ? 10 : FALSE;
+		return \preg_match($this->pattern, $argument) ? 10 : FALSE;
 	}
 
 	/**
@@ -54,7 +54,7 @@ class StringRegexToken implements Argument\Token\TokenInterface {
 	 */
 	public function __toString()
 	{
-		return sprintf('regex(%s)', $this->pattern);
+		return \sprintf('regex(%s)', $this->pattern);
 	}
 
 }

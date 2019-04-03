@@ -39,7 +39,7 @@ class EmailAssertionFailedException extends \Exception {
 			$matchers = array('none');
 		}
 
-		return $message.implode(', ', $matchers);
+		return $message.\implode(', ', $matchers);
 	}
 
 }
