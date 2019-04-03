@@ -9,3 +9,6 @@ before_script:
 
 script:
   - bin/phpspec run
+
+notifications:
+  email: false
