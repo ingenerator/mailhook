@@ -45,7 +45,7 @@ class MailhookAsserter {
 	 */
 	public function emailsMatching($matcher = NULL)
 	{
-		$matchers = func_get_args();
+		$matchers = \func_get_args();
 
 		return $this->positive_runner->assert($matchers);
 	}
@@ -57,10 +57,10 @@ class MailhookAsserter {
 	 */
 	public function firstEmailMatching($matcher = NULL)
 	{
-		$matchers = func_get_args();
+		$matchers = \func_get_args();
 		$emails   = $this->positive_runner->assert($matchers);
 
-		return array_shift($emails);
+		return \array_shift($emails);
 	}
 
 	/**
@@ -70,7 +70,7 @@ class MailhookAsserter {
 	 */
 	public function noEmailMatching($matcher = NULL)
 	{
-		$matchers = func_get_args();
+		$matchers = \func_get_args();
 
 		return $this->negative_runner->assert($matchers) ? : NULL;
 	}

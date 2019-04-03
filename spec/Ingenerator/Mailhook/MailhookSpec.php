@@ -41,7 +41,7 @@ class MailhookSpec extends ObjectBehavior
 	function let($parser)
 	{
 		$this->tmp_dir = vfsStream::setup('tmp');
-		clearstatcache();
+		\clearstatcache();
 		$this->subject->beConstructedWith(vfsStream::url('tmp/'.self::DUMP_FILE), $parser);
 	}
 

@@ -65,9 +65,9 @@ class Email {
 	 */
 	public function getLinksMatching($pattern)
 	{
-		return array_filter($this->links, function ($link) use ($pattern)
+		return \array_filter($this->links, function ($link) use ($pattern)
 			{
-				return preg_match($pattern, $link);
+				return \preg_match($pattern, $link);
 			}
 		);
 	}

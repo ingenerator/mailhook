@@ -36,7 +36,7 @@ class EmailContainingTextMatcher implements EmailMatcher {
 	 */
 	public function __toString()
 	{
-		return sprintf('With text "%s"', $this->text);
+		return \sprintf('With text "%s"', $this->text);
 	}
 
 	/**
@@ -44,6 +44,6 @@ class EmailContainingTextMatcher implements EmailMatcher {
 	 */
 	public function matches(Email $email)
 	{
-		return (strpos($email->getContent(), $this->text) !== FALSE);
+		return (\strpos($email->getContent(), $this->text) !== FALSE);
 	}
 }

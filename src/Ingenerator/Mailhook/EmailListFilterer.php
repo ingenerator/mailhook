@@ -33,7 +33,7 @@ class EmailListFilterer {
 		{
 			$this->matchers = $matchers;
 
-			return array_filter($emails, array($this, 'matchesAllMatchers'));
+			return \array_filter($emails, array($this, 'matchesAllMatchers'));
 		}
 		else
 		{

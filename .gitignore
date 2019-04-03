@@ -6,4 +6,4 @@ thumbs.db
 /build
 /.secrets
 /composer.lock
-./idea
+/.idea

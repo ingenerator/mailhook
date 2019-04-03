@@ -4,6 +4,11 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 ## Unreleased
 
+## v1.0.0 (2019-04-03)
+
+* Drop support for php5
+* Test on php7.2
+
 ## 0.2.1 / 2017-03-02
 
 * Tighten up bossa/php-expect dependency as the newer version clashes with phpspec
