@@ -8,6 +8,7 @@
 
 namespace spec\Ingenerator\Mailhook\Matcher;
 
+use Ingenerator\Mailhook\Email;
 use Prophecy\Argument;
 use spec\ObjectBehavior;
 
@@ -38,6 +39,7 @@ class EmailContainingTextMatcherSpec extends EmailMatcherBehaviour
 	 */
 	function it_does_not_match_email_with_empty_text($email)
 	{
+        $email->beADoubleOf(Email::class);
 		$email->getContent()->willReturn('');
 		$this->subject->matches($email)->shouldBe(FALSE);
 
@@ -50,6 +52,7 @@ class EmailContainingTextMatcherSpec extends EmailMatcherBehaviour
 	 */
 	function it_matches_email_beginning_with_text($email)
 	{
+        $email->beADoubleOf(Email::class);
 		$this->beConstructedWith('Some text');
 		$email->getContent()->willReturn('Some text that matches');
 		$this->subject->matches($email)->shouldBe(TRUE);
@@ -60,6 +63,7 @@ class EmailContainingTextMatcherSpec extends EmailMatcherBehaviour
 	 */
 	function it_matches_email_containing_text($email)
 	{
+        $email->beADoubleOf(Email::class);
 		$this->beConstructedWith('Some text');
 		$email->getContent()->willReturn('This email has Some text that matches');
 		$this->subject->matches($email)->shouldBe(TRUE);

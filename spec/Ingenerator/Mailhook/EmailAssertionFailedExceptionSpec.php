@@ -8,6 +8,7 @@
 
 namespace spec\Ingenerator\Mailhook;
 
+use Ingenerator\Mailhook\EmailMatcher;
 use Prophecy\Argument;
 use spec\ObjectBehavior;
 
@@ -51,6 +52,8 @@ class EmailAssertionFailedExceptionSpec extends ObjectBehavior
 	 */
 	function it_describes_matchers_in_message($matcher1, $matcher2)
 	{
+        $matcher1->beADoubleOf(EmailMatcher::class);
+        $matcher2->beADoubleOf(EmailMatcher::class);
 		$matcher1->__toString()->willReturn('Containing "here"');
 		$matcher2->__toString()->willReturn('To test@ingenerator.com');
 

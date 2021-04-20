@@ -9,6 +9,7 @@
 namespace spec\Ingenerator\Mailhook;
 
 use Ingenerator\Mailhook\Email;
+use Ingenerator\Mailhook\EmailMatcher;
 use Prophecy\Argument;
 use spec\ObjectBehavior;
 
@@ -44,6 +45,7 @@ class EmailListFiltererSpec extends ObjectBehavior
 	 */
 	function it_filters_emails_to_empty_array_when_matcher_does_not_match($matcher)
 	{
+	    $matcher->beADoubleOf(EmailMatcher::class);
 		$matcher->matches(Argument::any())->willReturn(FALSE);
 		$this->subject->filterEmails(array(new DummyEmail), array($matcher))->shouldBe(array());
 	}
@@ -54,6 +56,8 @@ class EmailListFiltererSpec extends ObjectBehavior
 	 */
 	function it_filters_emails_to_empty_array_when_one_matcher_matches_and_one_does_not($yes_matcher, $no_matcher)
 	{
+        $yes_matcher->beADoubleOf(EmailMatcher::class);
+        $no_matcher->beADoubleOf(EmailMatcher::class);
 		$yes_matcher->matches(Argument::any())->willReturn(TRUE);
 		$no_matcher->matches(Argument::any())->willReturn(FALSE);
 		$this->subject->filterEmails(array(new DummyEmail), array($yes_matcher, $no_matcher))->shouldBe(array());
@@ -64,6 +68,7 @@ class EmailListFiltererSpec extends ObjectBehavior
 	 */
 	function it_returns_all_emails_when_matcher_matches($matcher)
 	{
+        $matcher->beADoubleOf(EmailMatcher::class);
 		$email = new DummyEmail;
 		$this->given_matcher_matches($matcher, $email);
 		$this->subject->filterEmails(array($email), array($matcher))->shouldBe(array($email));
@@ -74,6 +79,7 @@ class EmailListFiltererSpec extends ObjectBehavior
 	 */
 	function it_returns_matching_emails_when_matcher_matches_some($matcher)
 	{
+        $matcher->beADoubleOf(EmailMatcher::class);
 		$good = new DummyEmail;
 		$bad = new DummyEmail;
 		$this->given_matcher_matches($matcher, $good);
@@ -86,6 +92,8 @@ class EmailListFiltererSpec extends ObjectBehavior
 	 */
 	function it_returns_emails_matching_all_matchers_with_some_good_and_some_bad($matcher_1, $matcher_2)
 	{
+        $matcher_1->beADoubleOf(EmailMatcher::class);
+        $matcher_2->beADoubleOf(EmailMatcher::class);
 		$both_good = new DummyEmail;
 		$both_bad  = new DummyEmail;
 		$one_good  = new DummyEmail;
