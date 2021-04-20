@@ -1,7 +1,7 @@
 # Mailhook
 
 [![License](https://poser.pugx.org/ingenerator/mailhook/license.svg)](https://packagist.org/packages/ingenerator/mailhook)
-[![Master Build Status](https://travis-ci.org/ingenerator/mailhook.png?branch=master)](https://travis-ci.org/ingenerator/mailhook)
+[![Build status](https://github.com/ingenerator/mailhook/actions/workflows/test.yaml/badge.svg)](https://github.com/ingenerator/mailhook/actions/workflows/test.yaml)
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/ingenerator/mailhook/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/ingenerator/mailhook/?branch=master)
 [![Latest Stable Version](https://poser.pugx.org/ingenerator/mailhook/v/stable.svg)](https://packagist.org/packages/ingenerator/mailhook)
 [![Total Downloads](https://poser.pugx.org/ingenerator/mailhook/downloads.svg)](https://packagist.org/packages/ingenerator/mailhook)
