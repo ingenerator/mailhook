@@ -8,6 +8,7 @@
 
 namespace spec\Ingenerator\Mailhook\Matcher;
 
+use Ingenerator\Mailhook\Email;
 use Prophecy\Argument;
 use spec\ObjectBehavior;
 
@@ -38,6 +39,7 @@ class AnyEmailMatcherSpec extends EmailMatcherBehaviour
 	 */
 	function it_matches_any_email($email)
 	{
+        $email->beADoubleOf(Email::class);
 		$this->subject->matches($email)->shouldBe(TRUE);
 	}
 

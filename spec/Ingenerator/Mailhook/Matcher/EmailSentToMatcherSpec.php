@@ -8,6 +8,7 @@
 
 namespace spec\Ingenerator\Mailhook\Matcher;
 
+use Ingenerator\Mailhook\Email;
 use Prophecy\Argument;
 use spec\ObjectBehavior;
 
@@ -38,6 +39,7 @@ class EmailSentToMatcherSpec extends EmailMatcherBehaviour
 	 */
 	function it_does_not_match_email_sent_to_someone_else($email)
 	{
+	    $email->beADoubleOf(Email::class);
 		$this->subject->beConstructedWith('test@ingenerator.com');
 		$email->getTo()->willReturn('someoneelse@ingenerator.com');
 		$this->subject->matches($email)->shouldBe(FALSE);
@@ -48,6 +50,7 @@ class EmailSentToMatcherSpec extends EmailMatcherBehaviour
 	 */
 	function it_matches_email_sent_to_recipient($email)
 	{
+        $email->beADoubleOf(Email::class);
 		$this->subject->beConstructedWith('test@ingenerator.com');
 		$email->getTo()->willReturn('test@ingenerator.com');
 		$this->subject->matches($email)->shouldBe(TRUE);

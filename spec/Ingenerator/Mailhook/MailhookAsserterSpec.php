@@ -8,6 +8,8 @@
 
 namespace spec\Ingenerator\Mailhook;
 
+use Ingenerator\Mailhook\Assert\NegativeAssertionRunner;
+use Ingenerator\Mailhook\Assert\PositiveAssertionRunner;
 use Prophecy\Argument;
 use spec\ObjectBehavior;
 
@@ -29,6 +31,8 @@ class MailhookAsserterSpec extends ObjectBehavior
 	 */
 	function let($positive_runner, $negative_runner)
 	{
+	    $positive_runner->beADoubleOf(PositiveAssertionRunner::class);
+	    $negative_runner->beADoubleOf(NegativeAssertionRunner::class);
 		$this->beConstructedWith($positive_runner, $negative_runner);
 	}
 

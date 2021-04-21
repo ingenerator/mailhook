@@ -8,6 +8,7 @@
 
 namespace spec\Ingenerator\Mailhook\Matcher;
 
+use Ingenerator\Mailhook\Email;
 use Prophecy\Argument;
 use spec\ObjectBehavior;
 
@@ -33,6 +34,7 @@ class EmailWithLinkMatcherSpec extends EmailMatcherBehaviour
 	 */
 	function it_does_not_match_email_with_no_links_when_no_pattern($email)
 	{
+        $email->beADoubleOf(Email::class);
 		$this->beConstructedWith(NULL);
 		$email->getLinks()->willReturn(array());
 		$this->subject->matches($email)->shouldBe(FALSE);
@@ -43,6 +45,7 @@ class EmailWithLinkMatcherSpec extends EmailMatcherBehaviour
 	 */
 	function it_does_not_match_email_with_no_links_when_pattern($email)
 	{
+        $email->beADoubleOf(Email::class);
 		$this->beConstructedWith('/reset/');
 		$email->getLinksMatching('/reset/')->willReturn(array());
 		$this->subject->matches($email)->shouldBe(FALSE);
@@ -53,6 +56,7 @@ class EmailWithLinkMatcherSpec extends EmailMatcherBehaviour
 	 */
 	function it_matches_email_with_any_link_when_pattern_is_empty($email)
 	{
+        $email->beADoubleOf(Email::class);
 		$this->beConstructedWith(NULL);
 		$email->getLinks()->willReturn(array('href' => 'http://foo.bar'));
 		$this->subject->matches($email)->shouldBe(TRUE);
@@ -63,6 +67,7 @@ class EmailWithLinkMatcherSpec extends EmailMatcherBehaviour
 	 */
 	function it_matches_email_with_matching_link_when_pattern_provided($email)
 	{
+        $email->beADoubleOf(Email::class);
 		$this->beConstructedWith('/reset/');
 		$email->getLinksMatching('/reset/')->willReturn(array('href' => 'http://foo.bar/reset'));
 		$this->subject->matches($email)->shouldBe(TRUE);

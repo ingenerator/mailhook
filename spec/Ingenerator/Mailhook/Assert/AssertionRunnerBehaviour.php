@@ -9,6 +9,9 @@
 namespace spec\Ingenerator\Mailhook\Assert;
 
 use Ingenerator\Mailhook\EmailAssertionFailedException;
+use Ingenerator\Mailhook\EmailListFilterer;
+use Ingenerator\Mailhook\EmailMatcher;
+use Ingenerator\Mailhook\Mailhook;
 use PhpSpec\Exception\Example\FailureException;
 use Prophecy\Argument;
 use spec\ObjectBehavior;
@@ -68,6 +71,9 @@ class AssertionRunnerBehaviour extends ObjectBehavior
 	 */
 	function let($mailhook, $filterer)
 	{
+        $mailhook->beADoubleOf(Mailhook::class);
+        $filterer->beADoubleOf(EmailListFilterer::class);
+
 		$mailhook->refresh()->willReturn(NULL);
 		$mailhook->getEmails()->willReturn(array());
 
@@ -77,6 +83,7 @@ class AssertionRunnerBehaviour extends ObjectBehavior
 	protected function try_assert_with($matchers = array())
 	{
 		foreach ($matchers as $matcher) {
+		    $matcher->beADoubleOf(EmailMatcher::class);
 			$matcher->__toString()->willReturn('');
 		}
 

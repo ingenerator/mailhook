@@ -8,6 +8,7 @@
 
 namespace spec\Ingenerator\Mailhook;
 
+use Ingenerator\Mailhook\EmailParser;
 use org\bovigo\vfs\vfsStream;
 use org\bovigo\vfs\vfsStreamDirectory;
 use org\bovigo\vfs\vfsStreamFile;
@@ -40,6 +41,7 @@ class MailhookSpec extends ObjectBehavior
 	 */
 	function let($parser)
 	{
+	    $parser->beADoubleOf(EmailParser::class);
 		$this->tmp_dir = vfsStream::setup('tmp');
 		\clearstatcache();
 		$this->subject->beConstructedWith(vfsStream::url('tmp/'.self::DUMP_FILE), $parser);
