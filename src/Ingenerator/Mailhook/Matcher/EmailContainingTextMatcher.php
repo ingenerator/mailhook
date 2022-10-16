@@ -42,8 +42,8 @@ class EmailContainingTextMatcher implements EmailMatcher {
 	/**
 	 * {@inheritdoc}
 	 */
-	public function matches(Email $email)
-	{
-		return (\strpos($email->getContent(), $this->text) !== FALSE);
+	public function matches(Email $email): bool
+    {
+		return (str_contains((string) $email->getContent(), $this->text));
 	}
 }
