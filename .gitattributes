@@ -27,3 +27,9 @@ README  text eol=lf
 *.swf    binary
 *.zip    binary
 *.sqlite binary
+
+/.github export-ignore
+/.phpspec export-ignore
+/spec export-ignore
+phpspec.yml export-ignore
+.scrutinizer.yml export-ignore
