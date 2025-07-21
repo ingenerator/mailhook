@@ -16,13 +16,13 @@
         }
     ],
     "require": {
-        "php": "~8.0.0 || ~8.1.0 || ~8.2.0 || ~8.3.0"
+        "php": "~8.2.0 || ~8.3.0 || ~8.4.0"
     },
     "require-dev": {
-        "phpspec/phpspec": "^7.2",
+        "phpspec/phpspec": "dev-main as 7.x-dev",
         "phpspec/prophecy": "~1.1",
         "mikey179/vfsstream": "^1.6.11",
-        "friends-of-phpspec/phpspec-expect": "^4.0"
+        "friends-of-phpspec/phpspec-expect": "dev-php84@dev"
     },
     "support": {
         "issues": "https://github.com/ingenerator/mailhook/issues",

@@ -49,10 +49,10 @@ class Mailhook {
 	 * @param string           $dump_file
 	 * @param null|EmailParser $parser
 	 */
-	public function __construct($dump_file, EmailParser $parser = NULL)
+	public function __construct($dump_file, ?EmailParser $parser = NULL)
 	{
 		$this->dump_file = $dump_file;
-		$this->parser    = $parser ? $parser : new EmailParser;
+		$this->parser    = $parser ?: new EmailParser;
 	}
 
 	public function assert()
