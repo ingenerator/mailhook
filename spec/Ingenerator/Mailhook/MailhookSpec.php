@@ -61,7 +61,9 @@ class MailhookSpec extends ObjectBehavior
 	{
 		$this->given_dump_file('');
 		$this->subject->purge();
-		expect($this->tmp_dir->hasChild(self::DUMP_FILE))->toBe(FALSE);
+		if ($this->tmp_dir->hasChild(self::DUMP_FILE) !== FALSE) {
+			throw new FailureException('Dump file not deleted');
+		}
 	}
 
 	function its_purge_throws_if_dump_file_cannot_be_deleted()

@@ -21,8 +21,7 @@
     "require-dev": {
         "phpspec/phpspec": "dev-main as 7.x-dev",
         "phpspec/prophecy": "~1.1",
-        "mikey179/vfsstream": "^1.6.11",
-        "friends-of-phpspec/phpspec-expect": "dev-php84@dev"
+        "mikey179/vfsstream": "^1.6.11"
     },
     "support": {
         "issues": "https://github.com/ingenerator/mailhook/issues",
