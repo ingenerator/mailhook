@@ -19,6 +19,7 @@
         "php": "~8.4.0 || ~8.5.0 || ~8.6.0"
     },
     "require-dev": {
+        "cweagans/composer-patches": "~2.0",
         "mikey179/vfsstream": "^1.6.11",
         "phpunit/phpunit": "^13.4"
     },
@@ -38,6 +39,9 @@
     },
     "bin": [],
     "config": {
+        "allow-plugins": {
+            "cweagans/composer-patches": true
+        },
         "preferred-install": "dist",
         "sort-packages": true
     },
