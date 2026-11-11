@@ -1,2 +1,0 @@
-formatter.name: pretty
-runner.maintainers.errors.level: 32767 # E_ALL
