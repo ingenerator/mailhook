@@ -4,6 +4,9 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 ## Unreleased
 
+## v1.4.0 (2026-11-11)
+
+* Support PHP 8.5 & PHP 8.6
 * Converted all PHPSpec test to PHPUnit
 * Drop support for PHP 8.2 and PHP 8.3
 

@@ -3,4 +3,5 @@
 Thumbs.db
 thumbs.db
 /composer.lock
+/patches.lock.json
 .phpunit.result.cache
